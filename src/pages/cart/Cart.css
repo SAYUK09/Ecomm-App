@@ -1,0 +1,45 @@
+/* @import "https://csscomponents.netlify.app/style.css"; */
+
+.cartParent {
+  display: flex;
+  padding: 1rem;
+  background-color: #f3f4f6;
+  min-height: 90vh;
+}
+
+.cartPrdsContainer {
+  padding: 1rem;
+}
+
+.paymentContainer {
+  position: fixed;
+  right: 0;
+  padding: 0.5rem;
+  border: 1px solid #3b82f6;
+  margin: 1rem;
+  width: 40vw;
+}
+
+.horizCardParent {
+  margin-bottom: 1rem;
+}
+
+.paymentSect {
+  display: flex;
+  justify-content: space-between;
+}
+
+.paymentSectTitle,
+.paymentAmt {
+  padding: 1rem;
+  color: #282c3f;
+}
+
+.paymentAmt.discAmt {
+  color: green;
+}
+
+.paymentSect.paymentSectTotal {
+  border-top: 1px solid #282c3f;
+  font-weight: bold;
+}

@@ -1,0 +1,16 @@
+/* @import "https://csscomponents.netlify.app/style.css"; */
+
+.wishlistParent {
+  background-color: #f3f4f6;
+  padding: 1rem 0;
+  margin-top: 10vh;
+  min-height: 90vh;
+}
+
+.wishlistBody {
+  padding: 1rem 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  justify-items: center;
+  align-items: center;
+}

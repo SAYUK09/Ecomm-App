@@ -1,0 +1,99 @@
+@import "https://csscomponents.netlify.app/style.css";
+
+* {
+  box-sizing: border-box;
+}
+
+.productsParent {
+  display: flex;
+  background-color: #f3f4f6;
+  padding: 1rem 0;
+  margin-top: 10vh;
+  /* width: 80%; */
+  min-height: 90vh;
+}
+
+aside {
+  background-color: #f3f4f6;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100vh;
+  padding: 1rem;
+  position: fixed;
+  left: 0;
+  top: 10vh;
+  margin: 0.5rem 0;
+  border-right: 1px solid #3b82f6;
+}
+
+.asideTitle {
+  color: #3b82f6;
+}
+
+.radioBtnDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  padding: 0.3rem 1rem;
+  color: #111827;
+}
+
+.btnPrimary {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  padding: 0.2rem;
+}
+
+.slider {
+  width: 100%;
+}
+
+.cardParent {
+  width: 80%;
+  padding: 0 1rem;
+  margin-left: 20%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  justify-items: center;
+  align-items: center;
+}
+
+.card1 {
+  margin-bottom: 2rem;
+  min-height: 22rem;
+  border: 1px solid #3b82f6;
+  transition: all 0.2s ease-in-out;
+}
+
+.imgDiv {
+  height: 12rem;
+}
+
+.card1:hover {
+  box-shadow: 0px 0px 10px 1px rgba(59, 130, 246, 0.75);
+  -webkit-box-shadow: 0px 0px 10px 1px rgba(59, 130, 246, 0.75);
+  -moz-box-shadow: 0px 0px 10px 1px rgba(59, 130, 246, 0.75);
+}
+
+.productPrice {
+  font-size: 1rem;
+}
+
+.productTitle {
+  white-space: normal;
+  padding-bottom: 0.1rem;
+}
+
+.secondaryBtnDiv {
+  justify-content: space-between;
+  padding-top: 0.5rem;
+}
+
+.secCardBtn {
+  min-width: 5rem;
+}
