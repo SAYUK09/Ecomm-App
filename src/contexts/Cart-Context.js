@@ -49,67 +49,9 @@ function cartReducer(cartRedcState, action) {
         ...cartRedcState,
         cart: [...cartRedcState.cart, action.payload]
       };
-      // return {...cartRedcState, cart:[....cartRedcState.cart ,action.payload]}
+     
       break;
-    // case "ADD_TO_CART":
-    //   axios
-    //     .post("https://basic-backend.sayuk.repl.co/cart", {
-    //       image: action.payload.image,
-    //       name: action.payload.name,
-    //       description: action.payload.description,
-    //       category: action.payload.category,
-    //       brand: action.payload.brand,
-    //       originalPrice: action.payload.originalPrice,
-    //       discountedPrice: action.payload.discountedPrice,
-    //       ratings: action.payload.ratings,
-    //       qty: action.payload.qty,
-    //       inStock: action.payload.inStock,
-    //       fastDelivery: action.payload.fastDelivery
-    //     })
-    //     .then(function (response) {
-    //       console.log(response.data);
-    //     });
-    //   return { ...cartRedcState };
-    //   break;
-    // case "INCREMENT":
-    //   return {
-    //     ...cartRedcState,
-    //     cart: cartRedcState.cart.map((item) => {
-    //       return item._id === action.payload._id
-    //         ? { ...item, quantity: item.quantity + 1 }
-    //         : item;
-    //     })
-    //   };
-    //   break;
-
-    // case "DECREMENT":
-    //   if (action.payload.qty === 1) {
-    //     return {
-    //       ...cartRedcState,
-    //       cart: cartRedcState.cart.filter(
-    //         (item) => item._id !== action.payload._id
-    //       )
-    //     };
-    //   } else {
-    //     return {
-    //       ...cartRedcState,
-    //       cart: cartRedcState.cart.map((item) => {
-    //         return item._id === action.payload._id
-    //           ? { ...item, quantity: item.quantity - 1 }
-    //           : item;
-    //       })
-    //     };
-    //   }
-    //   break;
-
-    // case "REMOVE":
-    //   console.log(action.payload);
-    //   return {
-    //     ...cartRedcState,
-    //     cart: cartRedcState.cart.filter(
-    //       (item) => item._id !== action.payload._id
-    //     )
-    //   };
+    
 
     default:
       break;
