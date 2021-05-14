@@ -3,7 +3,7 @@
 .nav1 {
   position: fixed;
   top: 0;
-  background-color: #3b82f6;
+  background-color: #3b82f6 !important;
   box-shadow: 0 7px 6px -6px #1f2937;
   margin-bottom: 0.5rem;
   border-bottom-left-radius: 0.5rem;

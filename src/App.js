@@ -1,23 +1,23 @@
 import "./styles.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-  useNavigate,
-  useParams,
-  useLocation
-} from "react-router-dom";
+import { Router } from "./components/routes/Router";
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route,
+//   Navigate,
+//   useNavigate,
+//   useParams,
+//   useLocation
+// } from "react-router-dom";
 import { useProductContext } from "./contexts/Products-Context";
 import { useCart } from "./contexts/Cart-Context";
 import { Products } from "./pages/products/Products";
 import { Cart } from "./pages/cart/Cart";
 import { Nav } from "./components/nav/Nav";
 import { Wishlist } from "./pages/wishlist/Wishlist";
-import {ProductDetail} from "./pages/product-details/ProductDetail";
-
+import { ProductDetail } from "./pages/product-details/ProductDetail";
 
 export default function App() {
   const { state, dispatch } = useProductContext();
@@ -41,7 +41,9 @@ export default function App() {
 
   return (
     <div className="App">
-      <Router>
+      <Nav />
+      <Router />
+      {/* <Router>
         <Nav />
 
         <Routes>
@@ -50,7 +52,7 @@ export default function App() {
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/product/:id" element ={<ProductDetail/>}/>
         </Routes>
-      </Router>
+      </Router> */}
     </div>
   );
 }

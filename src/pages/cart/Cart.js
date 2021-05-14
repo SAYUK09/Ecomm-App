@@ -15,21 +15,6 @@ export function Cart() {
   const { cartState, cartDispatch } = useCart();
   const { wishlistItems, setwishlistItems } = useWishlist();
 
-  useEffect(() => {
-    (async function () {
-      try {
-        const response = await axios.get(
-          "https://basic-backend.sayuk.repl.co/cart"
-        );
-        const cartArr = response.data;
-
-        cartDispatch({ type: "SET_CART", payload: cartArr });
-      } catch (err) {
-        console.log("Error!!!", err);
-      }
-    })();
-  }, []);
-
   function getPrice() {
     let total = 0;
     cartState.cart.map((item) => {
