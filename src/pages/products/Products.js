@@ -1,28 +1,39 @@
 import "./Products.css";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Link,
-  Route,
-  Navigate,
-  useNavigate,
-  useParams,
-  useLocation
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useProductContext } from "../../contexts/Products-Context";
-import { getSortedData } from "../../contexts/Products-Context";
-import { getPriceRangedData } from "../../contexts/Products-Context";
 import { useCart } from "../../contexts/Cart-Context";
 import { useWishlist } from "../../contexts/Wishlist-Context";
 import { addToCart } from "../../pages/cart/Cart";
 import { axiosAddToCart, axiosAddQty } from "../../utilty/cart-utility";
-import {axiosAddToWishlist} from "../../utilty/wishlist-utility"
-
+import { axiosAddToWishlist } from "../../utilty/wishlist-utility";
 
 export function Products() {
   const { state, dispatch } = useProductContext();
   const { cartState, cartDispatch } = useCart();
   const { wishlistItems, setwishlistItems } = useWishlist();
+
+  function getSortedData(productsList, sortBy) {
+    if (sortBy && sortBy === "PRICE_HIGH_TO_LOW") {
+      return [...productsList].sort(
+        (a, b) => b["discountedPrice"] - a["discountedPrice"]
+      );
+    }
+    if (sortBy && sortBy === "PRICE_LOW_TO_HIGH") {
+      return [...productsList].sort(
+        (a, b) => a["discountedPrice"] - b["discountedPrice"]
+      );
+    }
+    return productsList;
+  }
+
+  function getPriceRangedData(productsList, price) {
+    if (parseInt(price, 10) > 0) {
+      return productsList.filter(
+        (item) => parseInt(item.discountedPrice, 10) < parseInt(price, 10)
+      );
+    }
+    return productsList;
+  }
 
   let sortedData = getSortedData(state.products, state.sortBy);
   let priceRangedData = getPriceRangedData(sortedData, state.priceRange);
@@ -107,7 +118,11 @@ export function Products() {
 
                     <button
                       onClick={() => {
-                        axiosAddToWishlist(prd,wishlistItems, setwishlistItems)
+                        axiosAddToWishlist(
+                          prd,
+                          wishlistItems,
+                          setwishlistItems
+                        );
                       }}
                       className="secCardBtn"
                     >
