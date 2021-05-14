@@ -1,6 +1,7 @@
 import React, { useReducer } from "react";
 import axios from "axios";
 import { createContext, useContext, useState, useEffect } from "react";
+import { cartReducer } from "../reducers/Cart-Reducer";
 
 export const CartContext = createContext();
 
@@ -36,26 +37,6 @@ export function CartProvider({ children }) {
       </CartContext.Provider>
     </>
   );
-}
-
-function cartReducer(cartRedcState, action) {
-  switch (action.type) {
-    case "SET_CART":
-      return { ...cartRedcState, cart: action.payload };
-      break;
-
-    case "ADD_TO_CART":
-      return {
-        ...cartRedcState,
-        cart: [...cartRedcState.cart, action.payload]
-      };
-     
-      break;
-    
-
-    default:
-      break;
-  }
 }
 
 export function useCart() {
