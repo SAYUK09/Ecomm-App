@@ -20,10 +20,6 @@
   width: 40vw;
 }
 
-.horizCardParent {
-  margin-bottom: 1rem;
-}
-
 .paymentSect {
   display: flex;
   justify-content: space-between;

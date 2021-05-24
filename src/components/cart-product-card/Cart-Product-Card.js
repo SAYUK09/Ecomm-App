@@ -1,3 +1,4 @@
+import "./Cart-Product-Card.css";
 import {
   axiosAddQty,
   axiosDecrementQty,
