@@ -1,8 +1,10 @@
 import React from "react";
 import "./ProductDetail.css";
+import { useCart } from "../../contexts/Cart-Context";
 import { useProductContext } from "../../contexts/Products-Context";
 import { CgShoppingCart, CgHeart, CgMediaPodcast } from "react-icons/cg";
 import { ProductDetailCard } from "../../components/product-detail-card/Product-Detail-Card";
+import { useWishlist } from "../../contexts/Wishlist-Context";
 
 import {
   BrowserRouter as Router,
@@ -19,6 +21,8 @@ export function ProductDetail() {
   console.log(id, "paramId");
   console.log("lallala");
   const { state, dispatch } = useProductContext();
+  const { cartState, cartDispatch } = useCart();
+  const { wishlistItems, setwishlistItems } = useWishlist();
 
   const prdObj = state.products.filter((item) => item._id == id);
 
@@ -41,6 +45,10 @@ export function ProductDetail() {
         .map((prd) => {
           return (
             <ProductDetailCard
+              prd={prd}
+              cartDispatch={cartDispatch}
+              wishlistItems={wishlistItems}
+              setwishlistItems={setwishlistItems}
               img={prd.image}
               name={prd.name}
               description={prd.description}

@@ -1,7 +1,13 @@
 import "./Product-Detail-Card.css";
 import { CgShoppingCart, CgHeart, CgMediaPodcast } from "react-icons/cg";
+import { axiosAddToCart } from "../../utilty/cart-utility";
+import { axiosAddToWishlist } from "../../utilty/wishlist-utility";
 
 export function ProductDetailCard({
+  wishlistItems,
+  setwishlistItems,
+  prd,
+  cartDispatch,
   img,
   name,
   description,
@@ -33,12 +39,23 @@ export function ProductDetailCard({
           <small>Category : {category}</small>
         </div>
         <div className="prodDetailFooter">
-          <button className="prodPrimaryBtn">
+          <button
+            className="prodPrimaryBtn"
+            onClick={() => {
+              axiosAddToCart(prd, cartDispatch);
+              console.log("lala");
+            }}
+          >
             ADD TO CART <CgShoppingCart />
           </button>
 
-          <button className="prodSecondaryBtn">
-            Move to Wishlist <CgShoppingCart />
+          <button
+            className="prodSecondaryBtn"
+            onClick={() => {
+              axiosAddToWishlist(prd, wishlistItems, setwishlistItems);
+            }}
+          >
+            Add to Wishlist <CgShoppingCart />
           </button>
         </div>
       </div>
