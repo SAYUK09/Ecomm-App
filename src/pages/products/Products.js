@@ -90,6 +90,7 @@ export function Products() {
                 dispatch({ type: "PRICE_RANGE", payload: e.target.value })
               }
             />
+            Value : ₹{state.priceRange}
           </label>
         </aside>
 

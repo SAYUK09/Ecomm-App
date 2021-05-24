@@ -43,16 +43,6 @@ export default function App() {
     <div className="App">
       <Nav />
       <Router />
-      {/* <Router>
-        <Nav />
-
-        <Routes>
-          <Route path="/" element={<Products />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/wishlist" element={<Wishlist />} />
-          <Route path="/product/:id" element ={<ProductDetail/>}/>
-        </Routes>
-      </Router> */}
     </div>
   );
 }
