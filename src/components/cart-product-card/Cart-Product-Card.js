@@ -2,7 +2,7 @@ import "./Cart-Product-Card.css";
 import {
   axiosAddQty,
   axiosDecrementQty,
-  axiosRemoveFromCart
+  axiosRemoveFromCart,
 } from "../../utilty/cart-utility";
 import { axiosAddToWishlist } from "../../utilty/wishlist-utility";
 
@@ -32,7 +32,6 @@ export function CartProductCard({ prd }) {
               className="HorizQtyBtn"
               onClick={() => {
                 axiosAddQty(prd, cartDispatch);
-                // cartDispatch({ type: "INCREMENT", payload: prd });
               }}
             >
               +
@@ -63,11 +62,8 @@ export function CartProductCard({ prd }) {
         </button>
         <button
           onClick={() => {
-            // setwishlistItems((prds) => [...prds, prd]);
-            // removeFromCart(prd);
             axiosAddToWishlist(prd, wishlistItems, setwishlistItems);
             axiosRemoveFromCart(prd, cartDispatch);
-            // cartDispatch({ type: "REMOVE", payload: prd });
           }}
           className="horizFooterBtn"
         >
