@@ -22,7 +22,7 @@ import { ProductDetail } from "./pages/product-details/ProductDetail";
 export default function App() {
   const { state, dispatch } = useProductContext();
   const { cartState, cartDispatch } = useCart();
-  const [route, setRoute] = useState("product");
+
   useEffect(() => {
     (async function () {
       try {
