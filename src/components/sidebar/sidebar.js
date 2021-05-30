@@ -47,7 +47,7 @@ export function Sidebar() {
           className="slider"
           type="range"
           min="1200"
-          max="100000"
+          max="72000"
           value={state.priceRange}
           onChange={(e) =>
             dispatch({ type: "PRICE_RANGE", payload: e.target.value })
