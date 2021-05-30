@@ -62,7 +62,6 @@ export function Products() {
                     <button
                       onClick={() => {
                         axiosAddToCart(prd, cartDispatch);
-                        // cartDispatch({ type: "ADD_TO_CART", payload: prd });
                       }}
                       className="secCardBtn"
                     >

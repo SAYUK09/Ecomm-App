@@ -2,19 +2,10 @@ import React from "react";
 import "./ProductDetail.css";
 import { useCart } from "../../contexts/Cart-Context";
 import { useProductContext } from "../../contexts/Products-Context";
-import { CgShoppingCart, CgHeart, CgMediaPodcast } from "react-icons/cg";
 import { ProductDetailCard } from "../../components/product-detail-card/Product-Detail-Card";
 import { useWishlist } from "../../contexts/Wishlist-Context";
 
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-  useNavigate,
-  useParams,
-  useLocation
-} from "react-router-dom";
+import { BrowserRouter as Router, useParams } from "react-router-dom";
 
 export function ProductDetail() {
   const { id } = useParams();
