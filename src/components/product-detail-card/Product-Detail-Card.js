@@ -43,7 +43,7 @@ export function ProductDetailCard({
             className="prodPrimaryBtn"
             onClick={() => {
               axiosAddToCart(prd, cartDispatch);
-              console.log("lala");
+           
             }}
           >
             ADD TO CART <CgShoppingCart />
