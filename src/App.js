@@ -17,7 +17,6 @@ export default function App() {
           "https://lazytalkativeinstitutions.sayuk.repl.co/products"
         );
 
-        console.log(response.data);
         const prods = response.data;
         dispatch({ type: "PRODUCTS", payload: prods });
       } catch (err) {

@@ -1,6 +1,6 @@
 import { useProductContext } from "../../contexts/Products-Context";
 
-export function Sidebar({}) {
+export function Sidebar() {
   const { state, dispatch } = useProductContext();
 
   return (
