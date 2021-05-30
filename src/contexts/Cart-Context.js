@@ -7,7 +7,7 @@ export const CartContext = createContext();
 
 export function CartProvider({ children }) {
   const [cartState, cartDispatch] = useReducer(cartReducer, {
-    cart: []
+    cart: [],
   });
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export function CartProvider({ children }) {
         );
         const cartArr = response.data;
 
-        cartDispatch({ type: "SET_CART", payload: cartArr });
+        cartDispatch({ type: "LOAD_CART", payload: cartArr });
       } catch (err) {
         console.log("Error!!!", err);
       }
@@ -30,7 +30,7 @@ export function CartProvider({ children }) {
       <CartContext.Provider
         value={{
           cartState,
-          cartDispatch
+          cartDispatch,
         }}
       >
         {children}

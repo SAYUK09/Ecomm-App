@@ -16,7 +16,7 @@ export function axiosAddToCart(prd, cartDispatch) {
           ratings: prd.ratings,
           qty: prd.qty,
           inStock: prd.inStock,
-          fastDelivery: prd.fastDelivery
+          fastDelivery: prd.fastDelivery,
         }
       );
 
@@ -33,11 +33,11 @@ export function axiosAddQty(prd, cartDispatch) {
       const response = await axios.patch(
         `https://basic-backend.sayuk.repl.co/cart/${prd._id}`,
         {
-          qty: prd.qty + 1
+          qty: prd.qty + 1,
         }
       );
       console.log(response);
-      cartDispatch({ type: "SET_CART", payload: response.data });
+      cartDispatch({ type: "LOAD_CART", payload: response.data });
     } catch (error) {
       console.log(error);
     }
@@ -54,11 +54,11 @@ export function axiosDecrementQty(prd, cartDispatch) {
       const response = await axios.patch(
         `https://basic-backend.sayuk.repl.co/cart/${prd._id}`,
         {
-          qty: prd.qty - 1
+          qty: prd.qty - 1,
         }
       );
       console.log(response);
-      cartDispatch({ type: "SET_CART", payload: response.data });
+      cartDispatch({ type: "LOAD_CART", payload: response.data });
     } catch (error) {
       console.log(error);
     }
@@ -72,7 +72,7 @@ export function axiosRemoveFromCart(prd, cartDispatch) {
         `https://basic-backend.sayuk.repl.co/cart/${prd._id}`
       );
 
-      cartDispatch({ type: "SET_CART", payload: response.data });
+      cartDispatch({ type: "LOAD_CART", payload: response.data });
     } catch (error) {
       console.log(error);
     }
