@@ -12,17 +12,6 @@ export function productsReducer(RedcState, action) {
     case "RESET":
       return { ...RedcState, sortBy: "none", priceRange: 0 };
 
-    case "MICS":
-      console.log(action.isCheck);
-
-      console.log(action.isCheck.checked);
-      return {
-        ...RedcState,
-        products: RedcState.products.filter(
-          (item) => item.category === action.payload
-        ),
-      };
-
     default:
       break;
   }
