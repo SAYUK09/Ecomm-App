@@ -14,7 +14,7 @@ export default function App() {
     (async function () {
       try {
         const response = await axios.get(
-          "https://lazytalkativeinstitutions.sayuk.repl.co/products"
+          "https://ecom-backend-1.sayuk.repl.co/products"
         );
 
         const prods = response.data;

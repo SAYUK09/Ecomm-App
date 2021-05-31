@@ -31,7 +31,7 @@ export function axiosAddQty(prd, cartDispatch) {
   (async function () {
     try {
       const response = await axios.patch(
-        `https://ecom-backend-1.sayuk.repl.co/cart${prd._id}`,
+        `https://ecom-backend-1.sayuk.repl.co/cart/${prd._id}`,
         {
           qty: prd.qty + 1,
         }
@@ -69,7 +69,7 @@ export function axiosRemoveFromCart(prd, cartDispatch) {
   (async function () {
     try {
       const response = await axios.delete(
-        `https://ecom-backend-1.sayuk.repl.co/cart${prd._id}`
+        `https://ecom-backend-1.sayuk.repl.co/cart/${prd._id}`
       );
 
       cartDispatch({ type: "LOAD_CART", payload: response.data });
