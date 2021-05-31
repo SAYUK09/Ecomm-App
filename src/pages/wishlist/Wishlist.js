@@ -15,7 +15,7 @@ export function Wishlist() {
     (async function () {
       try {
         const response = await axios.get(
-          "https://basic-backend.sayuk.repl.co/wishlist"
+          "https://ecom-backend-1.sayuk.repl.co/wishlist"
         );
         const cartArr = response.data;
 

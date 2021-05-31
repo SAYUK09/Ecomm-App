@@ -4,7 +4,7 @@ export function axiosRemoveFromWishlist(prd, setWishlistItems) {
   (async function () {
     try {
       const response = await axios.delete(
-        `https://basic-backend.sayuk.repl.co/wishlist/${prd._id}`
+        `https://ecom-backend-1.sayuk.repl.co/wishlist/${prd._id}`
       );
 
       console.log(response.data);
@@ -19,7 +19,7 @@ export function axiosAddToWishlist(prd, wishlistItems, setWishlistItems) {
   (async function () {
     try {
       const resp = await axios.post(
-        "https://basic-backend.sayuk.repl.co/wishlist",
+        "https://ecom-backend-1.sayuk.repl.co/wishlist",
         {
           image: prd.image,
           name: prd.name,
@@ -31,7 +31,7 @@ export function axiosAddToWishlist(prd, wishlistItems, setWishlistItems) {
           ratings: prd.ratings,
           qty: prd.qty,
           inStock: prd.inStock,
-          fastDelivery: prd.fastDelivery
+          fastDelivery: prd.fastDelivery,
         }
       );
 

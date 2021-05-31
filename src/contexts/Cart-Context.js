@@ -14,7 +14,7 @@ export function CartProvider({ children }) {
     (async function () {
       try {
         const response = await axios.get(
-          "https://basic-backend.sayuk.repl.co/cart"
+          "https://ecom-backend-1.sayuk.repl.co/cart"
         );
         const cartArr = response.data;
 
