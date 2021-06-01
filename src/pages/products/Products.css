@@ -69,6 +69,11 @@ label {
   transition: all 0.2s ease-in-out;
 }
 
+.productTitle {
+  height: 2rem;
+  padding-bottom: 0;
+}
+
 .imgDiv {
   height: 12rem;
 }
@@ -91,8 +96,11 @@ label {
 .secondaryBtnDiv {
   justify-content: space-between;
   padding-top: 0.5rem;
+  /* height: 5rem;
+  align-items: center; */
 }
 
 .secCardBtn {
   min-width: 5rem;
+  /* height: 2.5rem; */
 }

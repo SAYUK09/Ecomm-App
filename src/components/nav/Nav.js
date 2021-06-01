@@ -9,34 +9,25 @@ import { FcShop } from "react-icons/fc";
 export function Nav() {
   const { cartState, cartDispatch } = useCart();
   const { wishlistItems, setwishlistItems } = useWishlist();
-  const [cartBadgeDisplay, setCartBadgeDisplay] =useState("none")
-  const [wishlistBadgeDisplay, setwishlistBadgeDisplay] =useState("none")
-
+  const [cartBadgeDisplay, setCartBadgeDisplay] = useState("none");
+  const [wishlistBadgeDisplay, setwishlistBadgeDisplay] = useState("none");
 
   useEffect(() => {
     if (cartState.cart.length > 0) {
-      setCartBadgeDisplay("block")
+      setCartBadgeDisplay("block");
+    } else {
+      setCartBadgeDisplay("none");
     }
-   else{
-    setCartBadgeDisplay("none")
+  }, [cartState.cart]);
 
-   }
-   
-  }, [cartState.cart])
- 
   useEffect(() => {
     if (wishlistItems.length > 0) {
-      setwishlistBadgeDisplay("block")
+      setwishlistBadgeDisplay("block");
+    } else {
+      setwishlistBadgeDisplay("none");
     }
-   else{
-    setwishlistBadgeDisplay("none")
+  }, [wishlistItems]);
 
-   }
-   
-  }, [wishlistItems])
- 
-
-  
   return (
     <div>
       <nav className="nav1">
@@ -50,12 +41,19 @@ export function Nav() {
           </Link>
           &nbsp;
           <Link className="routeLink" to="/cart">
-            <span style={{display:cartBadgeDisplay}} className="iconBadge">{cartState.cart.length}</span>
+            <span style={{ display: cartBadgeDisplay }} className="iconBadge">
+              {cartState.cart.length}
+            </span>
             <CgShoppingCart />
           </Link>
           &nbsp;
           <Link className="routeLink" to="/wishlist">
-            <span style={{display:wishlistBadgeDisplay}}  className="iconBadge">{wishlistItems.length}</span>
+            <span
+              style={{ display: wishlistBadgeDisplay }}
+              className="iconBadge"
+            >
+              {wishlistItems.length}
+            </span>
             <CgHeart />
           </Link>
           &nbsp;
