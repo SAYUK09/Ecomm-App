@@ -1,0 +1,33 @@
+/* @import "https://csscomponents.netlify.app/style.css"; */
+
+.nav1 {
+  position: fixed;
+  top: 0;
+  background-color: #3b82f6 !important;
+  box-shadow: 0 7px 6px -6px #1f2937;
+  margin-bottom: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.routeLink {
+  text-decoration: none;
+  color: white;
+  position: relative;
+}
+
+.navSearchBar {
+  padding: 0.5rem;
+}
+
+.iconBadge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: red;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  font-size: small;
+}
