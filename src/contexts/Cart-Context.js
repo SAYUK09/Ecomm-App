@@ -14,7 +14,13 @@ export function CartProvider({ children }) {
     (async function () {
       try {
         const response = await axios.get(
-          "https://ecom-backend-1.sayuk.repl.co/cart"
+          "https://ecom-backend-1.sayuk.repl.co/cart",
+          {
+            headers: {
+              "auth-token":
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGI3MzFmZDY2YWE4ZDAxODI4M2QwM2MiLCJpYXQiOjE2MjI2MTg2NzJ9.4UzVxkkrbFG7ZcdpVV59T6h37WZyh_43OsMbVJGP9R4",
+            },
+          }
         );
         const cartArr = response.data;
 

@@ -1,7 +1,8 @@
 import axios from "axios";
+import { useAuth } from "../contexts/Auth-Context";
 
 export function axiosAddToCart(prd, cartDispatch) {
-  (async function () {
+  const { auth, setAuth } = useAuth()(async function () {
     try {
       const resp = await axios.post(
         "https://ecom-backend-1.sayuk.repl.co/cart",
@@ -17,6 +18,11 @@ export function axiosAddToCart(prd, cartDispatch) {
           qty: prd.qty,
           inStock: prd.inStock,
           fastDelivery: prd.fastDelivery,
+        },
+        {
+          headers: {
+            "auth-token": auth.token,
+          },
         }
       );
 
