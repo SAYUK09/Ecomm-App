@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 import axios from "axios";
 import { createContext, useContext, useState, useEffect } from "react";
 import { cartReducer } from "../reducers/Cart-Reducer";
+import { useAuth } from "../contexts/Auth-Context";
 
 export const CartContext = createContext();
 
@@ -10,6 +11,9 @@ export function CartProvider({ children }) {
     cart: [],
   });
 
+  const { auth, setAuth } = useAuth();
+  console.log(auth, "155555555");
+
   useEffect(() => {
     (async function () {
       try {
@@ -17,8 +21,7 @@ export function CartProvider({ children }) {
           "https://ecom-backend-1.sayuk.repl.co/cart",
           {
             headers: {
-              "auth-token":
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGI3MzFmZDY2YWE4ZDAxODI4M2QwM2MiLCJpYXQiOjE2MjI2MTg2NzJ9.4UzVxkkrbFG7ZcdpVV59T6h37WZyh_43OsMbVJGP9R4",
+              "auth-token": auth.token,
             },
           }
         );
