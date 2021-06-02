@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useAuth } from "../contexts/Auth-Context";
 
 export function axiosAddToCart(prd, cartDispatch, auth) {
   (async function () {

@@ -1,16 +1,19 @@
 import "./Nav.css";
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link, Navigate } from "react-router-dom";
 import { useCart } from "../../contexts/Cart-Context";
 import { useWishlist } from "../../contexts/Wishlist-Context";
 import { CgShoppingCart, CgHeart, CgMediaPodcast } from "react-icons/cg";
 import { FcShop } from "react-icons/fc";
+import { useAuth } from "../../contexts/Auth-Context";
+import { Cart } from "../../pages/cart/Cart";
 
 export function Nav() {
   const { cartState, cartDispatch } = useCart();
   const { wishlistItems, setwishlistItems } = useWishlist();
   const [cartBadgeDisplay, setCartBadgeDisplay] = useState("none");
   const [wishlistBadgeDisplay, setwishlistBadgeDisplay] = useState("none");
+  const { auth } = useAuth();
 
   useEffect(() => {
     if (cartState.cart.length > 0) {

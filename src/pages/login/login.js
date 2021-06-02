@@ -1,15 +1,27 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useAuth } from "../../contexts/Auth-Context";
-// userrr9
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+  useHistory,
+  useLocation,
+  Navigate,
+  useNavigate,
+} from "react-router-dom";
 
 export function Login() {
+  const navigate = useNavigate();
+  const { state } = useLocation();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const { auth, setAuth } = useAuth();
-
-  console.log(auth, "Auuuuuuuuuth");
 
   async function login() {
     try {
@@ -20,16 +32,23 @@ export function Login() {
           password: password,
         }
       );
+
       console.log(response.data);
-      console.log(response.data.token);
-      setAuth(response.data);
-      setAuth((prev) => {
-        localStorage.setItem("auth", JSON.stringify(prev));
-        return prev;
-      });
+
+      if (!response.data.token) {
+        setError(response.data);
+      } else {
+        setAuth(response.data);
+        setAuth((prev) => {
+          localStorage.setItem("auth", JSON.stringify(prev));
+          return prev;
+        });
+        setError("");
+      }
     } catch (err) {
       console.log(err);
     }
+    navigate(state?.from ? state.from : "/");
   }
 
   return (
@@ -48,6 +67,8 @@ export function Login() {
       />
 
       <button onClick={login}>Sign Up</button>
+
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
 }
