@@ -13,26 +13,6 @@ export function Wishlist() {
   const { cartState, cartDispatch } = useCart();
   const { auth } = useAuth();
 
-  useEffect(() => {
-    (async function () {
-      try {
-        const response = await axios.get(
-          "https://ecom-backend-1.sayuk.repl.co/wishlist",
-          {
-            headers: {
-              "auth-token": auth.token,
-            },
-          }
-        );
-        const cartArr = response.data;
-
-        setwishlistItems(cartArr);
-      } catch (err) {
-        console.log("Error!!!", err);
-      }
-    })();
-  }, []);
-
   return (
     <div className="wishlistParent">
       <div className="wishlistBody">

@@ -16,20 +16,20 @@ export function Nav() {
   const { auth } = useAuth();
 
   useEffect(() => {
-    if (cartState.cart.length > 0) {
-      setCartBadgeDisplay("block");
-    } else {
-      setCartBadgeDisplay("none");
-    }
-  }, [cartState.cart]);
-
-  useEffect(() => {
     if (wishlistItems.length > 0) {
       setwishlistBadgeDisplay("block");
     } else {
       setwishlistBadgeDisplay("none");
     }
   }, [wishlistItems]);
+
+  useEffect(() => {
+    if (cartState.cart.length > 0) {
+      setCartBadgeDisplay("block");
+    } else {
+      setCartBadgeDisplay("none");
+    }
+  }, [cartState.cart]);
 
   return (
     <div>
@@ -39,7 +39,7 @@ export function Nav() {
         </div>
         <input className="navSearchBar" placeholder="🔎Search something" />
         <div className="navIcons">
-          <div>{auth && `wlecome ${auth.user.name}`}</div>
+          <div>{auth && `welcome ${auth.user.name}`}</div>
           <Link className="routeLink" to="/">
             <CgMediaPodcast />
           </Link>

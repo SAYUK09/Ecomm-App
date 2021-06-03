@@ -20,7 +20,6 @@ export function Router() {
   const { auth } = useAuth();
 
   function PrivateRoute({ path, ...props }) {
-    const { auth } = useAuth();
     console.log(path, props, "llllllll");
     return auth ? (
       <Route {...props} path={path} />

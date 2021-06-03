@@ -72,7 +72,7 @@ export function axiosDecrementQty(prd, cartDispatch, auth) {
           },
         }
       );
-      console.log(response);
+      console.log(response.data, "cartUtlity 75");
       cartDispatch({ type: "LOAD_CART", payload: response.data });
     } catch (error) {
       console.log(error);

@@ -11,8 +11,8 @@ export function CartProvider({ children }) {
     cart: [],
   });
 
-  const { auth, setAuth } = useAuth();
-  console.log(auth, "155555555");
+  const { auth } = useAuth();
+  console.log(cartState.cart);
 
   useEffect(() => {
     (async function () {
