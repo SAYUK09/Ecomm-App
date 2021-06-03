@@ -39,6 +39,7 @@ export function Nav() {
         </div>
         <input className="navSearchBar" placeholder="🔎Search something" />
         <div className="navIcons">
+          <div>{auth && `wlecome ${auth.user.name}`}</div>
           <Link className="routeLink" to="/">
             <CgMediaPodcast />
           </Link>

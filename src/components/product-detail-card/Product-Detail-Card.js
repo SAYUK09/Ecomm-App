@@ -2,6 +2,7 @@ import "./Product-Detail-Card.css";
 import { CgShoppingCart, CgHeart, CgMediaPodcast } from "react-icons/cg";
 import { axiosAddToCart } from "../../utilty/cart-utility";
 import { axiosAddToWishlist } from "../../utilty/wishlist-utility";
+import { useAuth } from "../../contexts/Auth-Context";
 
 export function ProductDetailCard({
   wishlistItems,
@@ -15,8 +16,9 @@ export function ProductDetailCard({
   brand,
   originalPrice,
   discountedPrice,
-  category
+  category,
 }) {
+  const { auth } = useAuth();
   return (
     <div className="prodBody">
       <div className="prodImgDiv">
@@ -42,8 +44,7 @@ export function ProductDetailCard({
           <button
             className="prodPrimaryBtn"
             onClick={() => {
-              axiosAddToCart(prd, cartDispatch);
-           
+              axiosAddToCart(prd, cartDispatch, auth);
             }}
           >
             ADD TO CART <CgShoppingCart />
@@ -52,7 +53,7 @@ export function ProductDetailCard({
           <button
             className="prodSecondaryBtn"
             onClick={() => {
-              axiosAddToWishlist(prd, wishlistItems, setwishlistItems);
+              axiosAddToWishlist(prd, wishlistItems, setwishlistItems, auth);
             }}
           >
             Add to Wishlist <CgShoppingCart />

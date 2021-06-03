@@ -1,10 +1,15 @@
 import axios from "axios";
 
-export function axiosRemoveFromWishlist(prd, setWishlistItems) {
+export function axiosRemoveFromWishlist(prd, setWishlistItems, auth) {
   (async function () {
     try {
       const response = await axios.delete(
-        `https://ecom-backend-1.sayuk.repl.co/wishlist/${prd._id}`
+        `https://ecom-backend-1.sayuk.repl.co/wishlist/${prd._id}`,
+        {
+          headers: {
+            "auth-token": auth.token,
+          },
+        }
       );
 
       console.log(response.data);
@@ -15,7 +20,7 @@ export function axiosRemoveFromWishlist(prd, setWishlistItems) {
   })();
 }
 
-export function axiosAddToWishlist(prd, wishlistItems, setWishlistItems) {
+export function axiosAddToWishlist(prd, wishlistItems, setWishlistItems, auth) {
   (async function () {
     try {
       const resp = await axios.post(
@@ -32,6 +37,11 @@ export function axiosAddToWishlist(prd, wishlistItems, setWishlistItems) {
           qty: prd.qty,
           inStock: prd.inStock,
           fastDelivery: prd.fastDelivery,
+        },
+        {
+          headers: {
+            "auth-token": auth.token,
+          },
         }
       );
 

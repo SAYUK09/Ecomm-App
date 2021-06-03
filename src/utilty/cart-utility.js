@@ -32,13 +32,18 @@ export function axiosAddToCart(prd, cartDispatch, auth) {
   })();
 }
 
-export function axiosAddQty(prd, cartDispatch) {
+export function axiosAddQty(prd, cartDispatch, auth) {
   (async function () {
     try {
       const response = await axios.patch(
         `https://ecom-backend-1.sayuk.repl.co/cart/${prd._id}`,
         {
           qty: prd.qty + 1,
+        },
+        {
+          headers: {
+            "auth-token": auth.token,
+          },
         }
       );
       console.log(response);
@@ -49,7 +54,7 @@ export function axiosAddQty(prd, cartDispatch) {
   })();
 }
 
-export function axiosDecrementQty(prd, cartDispatch) {
+export function axiosDecrementQty(prd, cartDispatch, auth) {
   (async function () {
     if (prd.qty === 1) {
       axiosRemoveFromCart(prd, cartDispatch);
@@ -60,6 +65,11 @@ export function axiosDecrementQty(prd, cartDispatch) {
         `https://ecom-backend-1.sayuk.repl.co/cart/${prd._id}`,
         {
           qty: prd.qty - 1,
+        },
+        {
+          headers: {
+            "auth-token": auth.token,
+          },
         }
       );
       console.log(response);
@@ -70,11 +80,17 @@ export function axiosDecrementQty(prd, cartDispatch) {
   })();
 }
 
-export function axiosRemoveFromCart(prd, cartDispatch) {
+export function axiosRemoveFromCart(prd, cartDispatch, auth) {
   (async function () {
+    console.log(prd._id);
     try {
       const response = await axios.delete(
-        `https://ecom-backend-1.sayuk.repl.co/cart/${prd._id}`
+        `https://ecom-backend-1.sayuk.repl.co/cart/${prd._id}`,
+        {
+          headers: {
+            "auth-token": auth.token,
+          },
+        }
       );
 
       cartDispatch({ type: "LOAD_CART", payload: response.data });

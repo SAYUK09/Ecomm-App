@@ -8,10 +8,12 @@ import { axiosAddToWishlist } from "../../utilty/wishlist-utility";
 
 import { useCart } from "../../contexts/Cart-Context";
 import { useWishlist } from "../../contexts/Wishlist-Context";
+import { useAuth } from "../../contexts/Auth-Context";
 
 export function CartProductCard({ prd }) {
   const { cartState, cartDispatch } = useCart();
   const { wishlistItems, setwishlistItems } = useWishlist();
+  const { auth } = useAuth();
 
   function getProdTotal(prod) {
     const total = parseInt(prod.discountedPrice) * parseInt(prod.qty);
@@ -31,7 +33,7 @@ export function CartProductCard({ prd }) {
             <button
               className="HorizQtyBtn"
               onClick={() => {
-                axiosAddQty(prd, cartDispatch);
+                axiosAddQty(prd, cartDispatch, auth);
               }}
             >
               +
@@ -40,7 +42,7 @@ export function CartProductCard({ prd }) {
             <button
               className="HorizQtyBtn subBtn"
               onClick={() => {
-                axiosDecrementQty(prd, cartDispatch);
+                axiosDecrementQty(prd, cartDispatch, auth);
               }}
             >
               -
@@ -55,15 +57,15 @@ export function CartProductCard({ prd }) {
         <button
           className="horizFooterBtn secBtn"
           onClick={() => {
-            axiosRemoveFromCart(prd, cartDispatch);
+            axiosRemoveFromCart(prd, cartDispatch, auth);
           }}
         >
           Remove
         </button>
         <button
           onClick={() => {
-            axiosAddToWishlist(prd, wishlistItems, setwishlistItems);
-            axiosRemoveFromCart(prd, cartDispatch);
+            axiosAddToWishlist(prd, wishlistItems, setwishlistItems, auth);
+            axiosRemoveFromCart(prd, cartDispatch, auth);
           }}
           className="horizFooterBtn"
         >

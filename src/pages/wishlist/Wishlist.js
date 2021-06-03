@@ -6,16 +6,23 @@ import { useWishlist } from "../../contexts/Wishlist-Context";
 import { useCart } from "../../contexts/Cart-Context";
 import { axiosRemoveFromWishlist } from "../../utilty/wishlist-utility";
 import { axiosAddToCart } from "../../utilty/cart-utility";
+import { useAuth } from "../../contexts/Auth-Context";
 
 export function Wishlist() {
   const { wishlistItems, setwishlistItems } = useWishlist();
   const { cartState, cartDispatch } = useCart();
+  const { auth } = useAuth();
 
   useEffect(() => {
     (async function () {
       try {
         const response = await axios.get(
-          "https://ecom-backend-1.sayuk.repl.co/wishlist"
+          "https://ecom-backend-1.sayuk.repl.co/wishlist",
+          {
+            headers: {
+              "auth-token": auth.token,
+            },
+          }
         );
         const cartArr = response.data;
 
@@ -41,7 +48,7 @@ export function Wishlist() {
                 <div className="secondaryBtnDiv">
                   <button
                     onClick={() => {
-                      axiosRemoveFromWishlist(prd, setwishlistItems);
+                      axiosRemoveFromWishlist(prd, setwishlistItems, auth);
                     }}
                     className="secCardBtn"
                   >
@@ -50,8 +57,8 @@ export function Wishlist() {
 
                   <button
                     onClick={() => {
-                      axiosRemoveFromWishlist(prd, setwishlistItems);
-                      axiosAddToCart(prd, cartDispatch);
+                      axiosRemoveFromWishlist(prd, setwishlistItems, auth);
+                      axiosAddToCart(prd, cartDispatch, auth);
                     }}
                     className="secCardBtn"
                   >

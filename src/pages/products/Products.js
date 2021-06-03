@@ -75,7 +75,8 @@ export function Products() {
                         axiosAddToWishlist(
                           prd,
                           wishlistItems,
-                          setwishlistItems
+                          setwishlistItems,
+                          auth
                         );
                       }}
                       className="secCardBtn"
