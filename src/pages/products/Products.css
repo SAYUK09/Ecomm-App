@@ -72,10 +72,11 @@ label {
 .productTitle {
   height: 2rem;
   padding-bottom: 0;
+  white-space: break-spaces !important;
 }
 
 .imgDiv {
-  height: 12rem;
+  height: 12rem !important;
 }
 
 .card1:hover {
@@ -88,13 +89,12 @@ label {
   font-size: 1rem;
 }
 
-.productTitle {
-  white-space: normal;
-  padding-bottom: 0.1rem;
+.productDescrip {
+  line-height: normal;
 }
 
 .secondaryBtnDiv {
-  justify-content: space-between;
+  justify-content: space-between !important;
   padding-top: 0.5rem;
   /* height: 5rem;
   align-items: center; */

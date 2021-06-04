@@ -1,13 +1,23 @@
+import "./signup.css";
 import axios from "axios";
 import React, { useState } from "react";
-// userrr9
+import {
+  BrowserRouter as Router,
+  Link,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 
 export function Signup() {
+  const navigate = useNavigate();
+  const { state } = useLocation();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  async function signup() {
+  async function signupHandler() {
     try {
       const response = await axios.post(
         "https://ecom-backend-1.sayuk.repl.co/register/signup",
@@ -17,32 +27,59 @@ export function Signup() {
           password: password,
         }
       );
-      console.log(response.data);
+      console.log(response.data, "resss");
+
+      if (!response.data.User) {
+        setError(response.data);
+      } else {
+        navigate(state?.from ? state.from : "/");
+      }
     } catch (err) {
       console.log(err);
+      setError("something went wrong");
     }
   }
 
   return (
-    <div>
-      <h1>signup</h1>
-      <input
-        onChange={(e) => {
-          setName(e.target.value);
-        }}
-      />
-      <input
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
-      />
-      <input
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
-      />
+    <div className="sigupParent">
+      <div className="sigupBody">
+        <h1>signup</h1>
+        <input
+          className="inputBox"
+          placeholder="Name"
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+        />
+        <input
+          placeholder="Email"
+          className="inputBox"
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+        />
+        <input
+          className="inputBox"
+          placeholder="Password"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        />
 
-      <button onClick={signup}>Sign Up</button>
+        <button className="btnPrimary" onClick={signupHandler}>
+          Sign Up
+        </button>
+
+        {error && (
+          <p className="errorMessage" style={{ color: "red" }}>
+            {error}
+          </p>
+        )}
+
+        <p>
+          Already have an account, <Link to="/login">Login</Link>
+        </p>
+      </div>
     </div>
   );
 }
