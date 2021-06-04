@@ -17,14 +17,11 @@ export function CartProvider({ children }) {
   useEffect(() => {
     (async function () {
       try {
-        const response = await axios.get(
-          "https://ecom-backend-1.sayuk.repl.co/cart",
-          {
-            headers: {
-              "auth-token": auth.token,
-            },
-          }
-        );
+        const response = await axios.get("https://podcart.herokuapp.com/cart", {
+          headers: {
+            "auth-token": auth.token,
+          },
+        });
         const cartArr = response.data;
 
         cartDispatch({ type: "LOAD_CART", payload: cartArr });

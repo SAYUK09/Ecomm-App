@@ -22,7 +22,7 @@ export function Login() {
   async function loginHandler() {
     try {
       const response = await axios.post(
-        "https://ecom-backend-1.sayuk.repl.co/register/login",
+        "https://podcart.herokuapp.com/register/login",
         {
           email: email,
           password: password,

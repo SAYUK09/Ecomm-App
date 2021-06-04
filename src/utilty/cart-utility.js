@@ -5,7 +5,7 @@ export function axiosAddToCart(prd, cartDispatch, auth) {
     (async function () {
       try {
         const resp = await axios.post(
-          "https://ecom-backend-1.sayuk.repl.co/cart",
+          "https://podcart.herokuapp.com/cart",
           {
             image: prd.image,
             name: prd.name,
@@ -41,7 +41,7 @@ export function axiosAddQty(prd, cartDispatch, auth) {
     (async function () {
       try {
         const response = await axios.patch(
-          `https://ecom-backend-1.sayuk.repl.co/cart/${prd._id}`,
+          `https://podcart.herokuapp.com/cart/${prd._id}`,
           {
             qty: prd.qty + 1,
           },
@@ -71,7 +71,7 @@ export function axiosDecrementQty(prd, cartDispatch, auth) {
 
       try {
         const response = await axios.patch(
-          `https://ecom-backend-1.sayuk.repl.co/cart/${prd._id}`,
+          `https://podcart.herokuapp.com/cart/${prd._id}`,
           {
             qty: prd.qty - 1,
           },
@@ -98,7 +98,7 @@ export function axiosRemoveFromCart(prd, cartDispatch, auth) {
       console.log(prd._id);
       try {
         const response = await axios.delete(
-          `https://ecom-backend-1.sayuk.repl.co/cart/${prd._id}`,
+          `https://podcart.herokuapp.com/cart/${prd._id}`,
           {
             headers: {
               "auth-token": auth.token,

@@ -20,7 +20,7 @@ export function Signup() {
   async function signupHandler() {
     try {
       const response = await axios.post(
-        "https://ecom-backend-1.sayuk.repl.co/register/signup",
+        "https://podcart.herokuapp.com/register/signup",
         {
           name: name,
           email: email,

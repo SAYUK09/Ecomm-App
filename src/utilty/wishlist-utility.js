@@ -5,7 +5,7 @@ export function axiosRemoveFromWishlist(prd, setWishlistItems, auth) {
     (async function () {
       try {
         const response = await axios.delete(
-          `https://ecom-backend-1.sayuk.repl.co/wishlist/${prd._id}`,
+          `https://podcart.herokuapp.com/wishlist/${prd._id}`,
           {
             headers: {
               "auth-token": auth.token,
@@ -29,7 +29,7 @@ export function axiosAddToWishlist(prd, wishlistItems, setWishlistItems, auth) {
     (async function () {
       try {
         const resp = await axios.post(
-          "https://ecom-backend-1.sayuk.repl.co/wishlist",
+          "https://podcart.herokuapp.com/wishlist",
           {
             image: prd.image,
             name: prd.name,

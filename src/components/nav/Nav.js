@@ -35,7 +35,7 @@ export function Nav() {
     <div>
       <nav className="nav1">
         <div className="logo">
-          <img className="navLogo" src="/ecom-nav-favicon.png" />
+          <img className="navLogo" src="../assets/ecom-nav-favicon" />
         </div>
         <input className="navSearchBar" placeholder="🔎Search something" />
         <div className="navIcons">

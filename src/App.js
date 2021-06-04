@@ -18,7 +18,7 @@ export default function App() {
     (async function () {
       try {
         const response = await axios.get(
-          "https://ecom-backend-1.sayuk.repl.co/products"
+          "https://podcart.herokuapp.com/products"
         );
 
         const prods = response.data;
@@ -35,7 +35,7 @@ export default function App() {
         console.log("taraarar");
 
         const response = await axios.get(
-          "https://ecom-backend-1.sayuk.repl.co/wishlist",
+          "https://podcart.herokuapp.com/wishlist",
           {
             headers: {
               "auth-token": auth.token,
