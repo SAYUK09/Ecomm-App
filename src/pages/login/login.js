@@ -8,10 +8,12 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
+import { useToast } from "../../contexts/Toast-Context";
 
 export function Login() {
   const navigate = useNavigate();
   const { state } = useLocation();
+  const { toast } = useToast();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,19 +35,23 @@ export function Login() {
 
       if (!response.data.token) {
         setError(response.data);
+        toast(response.data, {
+          type: "error",
+        });
       } else {
         setAuth(response.data);
         setAuth((prev) => {
           localStorage.setItem("auth", JSON.stringify(prev));
           return prev;
         });
-        navigate(state?.from ? state.from : "/");
 
-        setError("");
+        navigate(state?.from ? state.from : "/");
+        toast("logged in successfully", {
+          type: "success",
+        });
       }
     } catch (err) {
       console.log(err);
-      setError("something went wrong");
     }
   }
 

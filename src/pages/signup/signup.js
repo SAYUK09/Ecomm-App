@@ -7,10 +7,13 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
+import { useToast } from "../../contexts/Toast-Context";
 
 export function Signup() {
   const navigate = useNavigate();
   const { state } = useLocation();
+
+  const { toast } = useToast();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -27,16 +30,24 @@ export function Signup() {
           password: password,
         }
       );
-      console.log(response.data, "resss");
 
       if (!response.data.User) {
         setError(response.data);
+        toast(response.data, {
+          type: "error",
+        });
       } else {
         navigate(state?.from ? state.from : "/");
+        toast("signed in successfully", {
+          type: "success",
+        });
       }
     } catch (err) {
       console.log(err);
       setError("something went wrong");
+      toast("something went wrong", {
+        type: "error",
+      });
     }
   }
 
