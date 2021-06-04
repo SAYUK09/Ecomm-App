@@ -39,7 +39,15 @@ export function Nav() {
         </div>
         <input className="navSearchBar" placeholder="🔎Search something" />
         <div className="navIcons">
-          <div>{auth && `welcome ${auth.user.name}`}</div>
+          <div className="userName">
+            {auth ? (
+              `welcome ${auth.user.name}`
+            ) : (
+              <Link className="routerLink" to="/login">
+                Login
+              </Link>
+            )}
+          </div>
           <Link className="routeLink" to="/">
             <CgMediaPodcast />
           </Link>
