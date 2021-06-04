@@ -3,6 +3,7 @@ import { CgShoppingCart, CgHeart, CgMediaPodcast } from "react-icons/cg";
 import { axiosAddToCart } from "../../utilty/cart-utility";
 import { axiosAddToWishlist } from "../../utilty/wishlist-utility";
 import { useAuth } from "../../contexts/Auth-Context";
+import { useToast } from "../../contexts/Toast-Context";
 
 export function ProductDetailCard({
   wishlistItems,
@@ -19,6 +20,7 @@ export function ProductDetailCard({
   category,
 }) {
   const { auth } = useAuth();
+  const { toast } = useToast();
   return (
     <div className="prodBody">
       <div className="prodImgDiv">
@@ -44,7 +46,7 @@ export function ProductDetailCard({
           <button
             className="prodPrimaryBtn"
             onClick={() => {
-              axiosAddToCart(prd, cartDispatch, auth);
+              axiosAddToCart(prd, cartDispatch, auth, toast);
             }}
           >
             ADD TO CART <CgShoppingCart />
@@ -53,7 +55,13 @@ export function ProductDetailCard({
           <button
             className="prodSecondaryBtn"
             onClick={() => {
-              axiosAddToWishlist(prd, wishlistItems, setwishlistItems, auth);
+              axiosAddToWishlist(
+                prd,
+                wishlistItems,
+                setwishlistItems,
+                auth,
+                toast
+              );
             }}
           >
             Add to Wishlist <CgShoppingCart />

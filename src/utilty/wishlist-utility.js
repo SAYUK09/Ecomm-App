@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export function axiosRemoveFromWishlist(prd, setWishlistItems, auth) {
+export function axiosRemoveFromWishlist(prd, setWishlistItems, auth, toast) {
   if (auth) {
     (async function () {
       try {
@@ -21,10 +21,19 @@ export function axiosRemoveFromWishlist(prd, setWishlistItems, auth) {
     })();
   } else {
     console.log("Please Login");
+    toast("Please Login", {
+      type: "error",
+    });
   }
 }
 
-export function axiosAddToWishlist(prd, wishlistItems, setWishlistItems, auth) {
+export function axiosAddToWishlist(
+  prd,
+  wishlistItems,
+  setWishlistItems,
+  auth,
+  toast
+) {
   if (auth) {
     (async function () {
       try {
@@ -57,5 +66,8 @@ export function axiosAddToWishlist(prd, wishlistItems, setWishlistItems, auth) {
     })();
   } else {
     console.log("Please Login");
+    toast("Please Login", {
+      type: "error",
+    });
   }
 }

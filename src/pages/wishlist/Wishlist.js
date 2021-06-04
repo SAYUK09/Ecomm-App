@@ -7,11 +7,13 @@ import { useCart } from "../../contexts/Cart-Context";
 import { axiosRemoveFromWishlist } from "../../utilty/wishlist-utility";
 import { axiosAddToCart } from "../../utilty/cart-utility";
 import { useAuth } from "../../contexts/Auth-Context";
+import { useToast } from "../../contexts/Toast-Context";
 
 export function Wishlist() {
   const { wishlistItems, setwishlistItems } = useWishlist();
   const { cartState, cartDispatch } = useCart();
   const { auth } = useAuth();
+  const { toast } = useToast();
 
   return (
     <div className="wishlistParent">
@@ -28,7 +30,12 @@ export function Wishlist() {
                 <div className="secondaryBtnDiv">
                   <button
                     onClick={() => {
-                      axiosRemoveFromWishlist(prd, setwishlistItems, auth);
+                      axiosRemoveFromWishlist(
+                        prd,
+                        setwishlistItems,
+                        auth,
+                        toast
+                      );
                     }}
                     className="secCardBtn"
                   >
@@ -37,8 +44,13 @@ export function Wishlist() {
 
                   <button
                     onClick={() => {
-                      axiosRemoveFromWishlist(prd, setwishlistItems, auth);
-                      axiosAddToCart(prd, cartDispatch, auth);
+                      axiosRemoveFromWishlist(
+                        prd,
+                        setwishlistItems,
+                        auth,
+                        toast
+                      );
+                      axiosAddToCart(prd, cartDispatch, auth, toast);
                     }}
                     className="secCardBtn"
                   >

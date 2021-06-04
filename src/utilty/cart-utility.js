@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export function axiosAddToCart(prd, cartDispatch, auth) {
+export function axiosAddToCart(prd, cartDispatch, auth, toast) {
   if (auth) {
     (async function () {
       try {
@@ -33,10 +33,13 @@ export function axiosAddToCart(prd, cartDispatch, auth) {
     })();
   } else {
     console.log("please log in");
+    toast("Please Login", {
+      type: "error",
+    });
   }
 }
 
-export function axiosAddQty(prd, cartDispatch, auth) {
+export function axiosAddQty(prd, cartDispatch, auth, toast) {
   if (auth) {
     (async function () {
       try {
@@ -59,14 +62,17 @@ export function axiosAddQty(prd, cartDispatch, auth) {
     })();
   } else {
     console.log("Please Login");
+    toast("Please Login", {
+      type: "error",
+    });
   }
 }
 
-export function axiosDecrementQty(prd, cartDispatch, auth) {
+export function axiosDecrementQty(prd, cartDispatch, auth, toast) {
   if (auth) {
     (async function () {
       if (prd.qty === 1) {
-        axiosRemoveFromCart(prd, cartDispatch);
+        axiosRemoveFromCart(prd, cartDispatch, auth, toast);
       }
 
       try {
@@ -89,10 +95,13 @@ export function axiosDecrementQty(prd, cartDispatch, auth) {
     })();
   } else {
     console.log("Please Login");
+    toast("Please Login", {
+      type: "error",
+    });
   }
 }
 
-export function axiosRemoveFromCart(prd, cartDispatch, auth) {
+export function axiosRemoveFromCart(prd, cartDispatch, auth, toast) {
   if (auth) {
     (async function () {
       console.log(prd._id);
@@ -113,5 +122,8 @@ export function axiosRemoveFromCart(prd, cartDispatch, auth) {
     })();
   } else {
     console.log("Please Login");
+    toast("Please Login", {
+      type: "error",
+    });
   }
 }

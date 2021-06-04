@@ -7,12 +7,14 @@ import { useCart } from "./contexts/Cart-Context";
 import { Nav } from "./components/nav/Nav";
 import { useWishlist } from "./contexts/Wishlist-Context";
 import { useAuth } from "./contexts/Auth-Context";
+import { useToast } from "./contexts/Toast-Context";
 
 export default function App() {
   const { state, dispatch } = useProductContext();
   const { cartState, cartDispatch } = useCart();
   const { wishlistItems, setwishlistItems } = useWishlist();
   const { auth } = useAuth();
+  const { ToastContainer } = useToast();
 
   useEffect(() => {
     (async function () {
@@ -56,6 +58,17 @@ export default function App() {
     <div className="App">
       <Nav />
       <Router />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }

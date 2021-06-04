@@ -8,12 +8,14 @@ import { axiosAddToCart, axiosAddQty } from "../../utilty/cart-utility";
 import { axiosAddToWishlist } from "../../utilty/wishlist-utility";
 import { Sidebar } from "../../components/sidebar/sidebar";
 import { useAuth } from "../../contexts/Auth-Context";
+import { useToast } from "../../contexts/Toast-Context";
 
 export function Products() {
   const { state, dispatch } = useProductContext();
   const { cartState, cartDispatch } = useCart();
   const { wishlistItems, setwishlistItems } = useWishlist();
   const { auth, setAuth } = useAuth();
+  const { toast } = useToast();
 
   function getSortedData(productsList, sortBy) {
     if (sortBy && sortBy === "PRICE_HIGH_TO_LOW") {
@@ -63,7 +65,7 @@ export function Products() {
                   <div className="secondaryBtnDiv">
                     <button
                       onClick={() => {
-                        axiosAddToCart(prd, cartDispatch, auth);
+                        axiosAddToCart(prd, cartDispatch, auth, toast);
                       }}
                       className="secCardBtn"
                     >
@@ -76,7 +78,8 @@ export function Products() {
                           prd,
                           wishlistItems,
                           setwishlistItems,
-                          auth
+                          auth,
+                          toast
                         );
                       }}
                       className="secCardBtn"
