@@ -7,6 +7,7 @@ import { CgShoppingCart, CgHeart, CgMediaPodcast } from "react-icons/cg";
 import { FcShop } from "react-icons/fc";
 import { useAuth } from "../../contexts/Auth-Context";
 import { Cart } from "../../pages/cart/Cart";
+import logo from "../../assets/ecom-nav-favicon.png";
 
 export function Nav() {
   const { cartState, cartDispatch } = useCart();
@@ -35,7 +36,7 @@ export function Nav() {
     <div>
       <nav className="nav1">
         <div className="logo">
-          <img className="navLogo" src="../assets/ecom-nav-favicon" />
+          <img className="navLogo" src={logo} />
         </div>
         <input className="navSearchBar" placeholder="🔎Search something" />
         <div className="navIcons">
