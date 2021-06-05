@@ -27,8 +27,14 @@ export function axiosAddToCart(prd, cartDispatch, auth, toast) {
         );
 
         cartDispatch({ type: "ADD_TO_CART", payload: resp.data });
+        toast("Product added to cart", {
+          type: "success",
+        });
       } catch (err) {
         console.log(err);
+        toast("Something went wrong", {
+          type: "error",
+        });
       }
     })();
   } else {
@@ -56,8 +62,14 @@ export function axiosAddQty(prd, cartDispatch, auth, toast) {
         );
         console.log(response);
         cartDispatch({ type: "LOAD_CART", payload: response.data });
+        toast("Quantity Updated", {
+          type: "success",
+        });
       } catch (error) {
         console.log(error);
+        toast("Something went wrong", {
+          type: "error",
+        });
       }
     })();
   } else {
@@ -89,8 +101,14 @@ export function axiosDecrementQty(prd, cartDispatch, auth, toast) {
         );
         console.log(response.data, "cartUtlity 75");
         cartDispatch({ type: "LOAD_CART", payload: response.data });
+        toast("Quantity Updated", {
+          type: "success",
+        });
       } catch (error) {
         console.log(error);
+        toast("Something went wrong", {
+          type: "error",
+        });
       }
     })();
   } else {
@@ -116,8 +134,14 @@ export function axiosRemoveFromCart(prd, cartDispatch, auth, toast) {
         );
 
         cartDispatch({ type: "LOAD_CART", payload: response.data });
+        toast("Removed from cart", {
+          type: "success",
+        });
       } catch (error) {
         console.log(error);
+        toast("Something went wrong", {
+          type: "error",
+        });
       }
     })();
   } else {

@@ -15,6 +15,9 @@ export function axiosRemoveFromWishlist(prd, setWishlistItems, auth, toast) {
 
         console.log(response.data);
         setWishlistItems(response.data);
+        toast("Removed from wishlist", {
+          type: "success",
+        });
       } catch (error) {
         console.log(error);
       }
@@ -60,6 +63,9 @@ export function axiosAddToWishlist(
         );
 
         setWishlistItems([...wishlistItems, resp.data]);
+        toast("Added to wishlist", {
+          type: "success",
+        });
       } catch (err) {
         console.log(err);
       }
