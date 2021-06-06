@@ -1,5 +1,49 @@
 import axios from "axios";
 
+export function cartClickHandler(prd, cartState, cartDispatch, auth, toast) {
+  const isInCart = cartState.cart.filter((item) => {
+    console.log(item.productId == prd._id);
+    return prd._id == item.productId;
+  });
+
+  if (cartState.cart.length > 0) {
+    if (isInCart.length === 1) {
+      toast("Already in cart", {
+        type: "warning",
+      });
+    } else {
+      axiosAddToCart(prd, cartDispatch, auth, toast);
+    }
+  } else {
+    axiosAddToCart(prd, cartDispatch, auth, toast);
+  }
+}
+
+export function cartClickHandlerFromWishlist(
+  prd,
+  cartState,
+  cartDispatch,
+  auth,
+  toast
+) {
+  const isInCart = cartState.cart.filter((item) => {
+    console.log(item.productId == prd._id);
+    return prd.productId == item.productId;
+  });
+
+  if (cartState.cart.length > 0) {
+    if (isInCart.length === 1) {
+      toast("Already in cart", {
+        type: "warning",
+      });
+    } else {
+      axiosAddToCart(prd, cartDispatch, auth, toast);
+    }
+  } else {
+    axiosAddToCart(prd, cartDispatch, auth, toast);
+  }
+}
+
 export function axiosAddToCart(prd, cartDispatch, auth, toast) {
   if (auth) {
     (async function () {
@@ -7,6 +51,7 @@ export function axiosAddToCart(prd, cartDispatch, auth, toast) {
         const resp = await axios.post(
           "https://podcart.herokuapp.com/cart",
           {
+            productId: prd._id,
             image: prd.image,
             name: prd.name,
             description: prd.description,
@@ -32,9 +77,9 @@ export function axiosAddToCart(prd, cartDispatch, auth, toast) {
         });
       } catch (err) {
         console.log(err);
-        toast("Something went wrong", {
-          type: "error",
-        });
+        // toast("Something went wrong", {
+        //   type: "error",
+        // });
       }
     })();
   } else {

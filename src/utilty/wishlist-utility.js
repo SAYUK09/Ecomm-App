@@ -1,5 +1,57 @@
 import axios from "axios";
 
+export function wishClickHandler(
+  prd,
+  wishlistItems,
+  setWishlistItems,
+  auth,
+  toast
+) {
+  const isInWishlist = wishlistItems.filter((item) => {
+    console.log(item.productId, prd._id);
+    console.log(item.productId == prd._id);
+    return prd._id == item.productId;
+  });
+
+  if (wishlistItems.length > 0) {
+    if (isInWishlist.length === 1) {
+      toast("Already in wishlist", {
+        type: "warning",
+      });
+    } else {
+      axiosAddToWishlist(prd, wishlistItems, setWishlistItems, auth, toast);
+    }
+  } else {
+    axiosAddToWishlist(prd, wishlistItems, setWishlistItems, auth, toast);
+  }
+}
+
+export function wishClickHandlerFromCart(
+  prd,
+  wishlistItems,
+  setWishlistItems,
+  auth,
+  toast
+) {
+  const isInWishlist = wishlistItems.filter((item) => {
+    console.log(item.productId, prd._id);
+    console.log(item.productId == prd._id);
+    return prd.productId == item.productId;
+  });
+
+  if (wishlistItems.length > 0) {
+    if (isInWishlist.length === 1) {
+      toast("Already in wishlist", {
+        type: "warning",
+      });
+    } else {
+      axiosAddToWishlist(prd, wishlistItems, setWishlistItems, auth, toast);
+    }
+  } else {
+    axiosAddToWishlist(prd, wishlistItems, setWishlistItems, auth, toast);
+  }
+}
+
 export function axiosRemoveFromWishlist(prd, setWishlistItems, auth, toast) {
   if (auth) {
     (async function () {
@@ -37,12 +89,14 @@ export function axiosAddToWishlist(
   auth,
   toast
 ) {
+  console.log(prd._id);
   if (auth) {
     (async function () {
       try {
         const resp = await axios.post(
           "https://podcart.herokuapp.com/wishlist",
           {
+            productId: prd._id,
             image: prd.image,
             name: prd.name,
             description: prd.description,

@@ -4,8 +4,15 @@ import { useProductContext } from "../../contexts/Products-Context";
 import { useCart } from "../../contexts/Cart-Context";
 import { useWishlist } from "../../contexts/Wishlist-Context";
 import { addToCart } from "../../pages/cart/Cart";
-import { axiosAddToCart, axiosAddQty } from "../../utilty/cart-utility";
-import { axiosAddToWishlist } from "../../utilty/wishlist-utility";
+import {
+  axiosAddToCart,
+  axiosAddQty,
+  cartClickHandler,
+} from "../../utilty/cart-utility";
+import {
+  axiosAddToWishlist,
+  wishClickHandler,
+} from "../../utilty/wishlist-utility";
 import { Sidebar } from "../../components/sidebar/sidebar";
 import { useAuth } from "../../contexts/Auth-Context";
 import { useToast } from "../../contexts/Toast-Context";
@@ -64,17 +71,23 @@ export function Products() {
                   <h4 className="productDescrip">{prd.description}</h4>
                   <div className="secondaryBtnDiv">
                     <button
-                      onClick={() => {
-                        axiosAddToCart(prd, cartDispatch, auth, toast);
-                      }}
                       className="secCardBtn"
+                      onClick={() => {
+                        cartClickHandler(
+                          prd,
+                          cartState,
+                          cartDispatch,
+                          auth,
+                          toast
+                        );
+                      }}
                     >
                       Cart
                     </button>
 
                     <button
                       onClick={() => {
-                        axiosAddToWishlist(
+                        wishClickHandler(
                           prd,
                           wishlistItems,
                           setwishlistItems,

@@ -4,7 +4,7 @@ import {
   axiosDecrementQty,
   axiosRemoveFromCart,
 } from "../../utilty/cart-utility";
-import { axiosAddToWishlist } from "../../utilty/wishlist-utility";
+import { wishClickHandlerFromCart } from "../../utilty/wishlist-utility";
 
 import { useCart } from "../../contexts/Cart-Context";
 import { useWishlist } from "../../contexts/Wishlist-Context";
@@ -66,13 +66,14 @@ export function CartProductCard({ prd }) {
         </button>
         <button
           onClick={() => {
-            axiosAddToWishlist(
+            wishClickHandlerFromCart(
               prd,
               wishlistItems,
               setwishlistItems,
               auth,
               toast
             );
+
             axiosRemoveFromCart(prd, cartDispatch, auth, toast);
           }}
           className="horizFooterBtn"

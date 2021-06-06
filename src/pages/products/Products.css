@@ -65,8 +65,11 @@ label {
 .card1 {
   margin-bottom: 2rem;
   min-height: 22rem;
-  border: 1px solid #3b82f6;
-  transition: all 0.2s ease-in-out;
+  border: none !important;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 0px 18px -7px rgba(59, 130, 246, 1);
+  -webkit-box-shadow: 0px 0px 18px -7px rgba(59, 130, 246, 1);
+  -moz-box-shadow: 0px 0px 18px -7px rgba(59, 130, 246, 1);
 }
 
 .productTitle {
@@ -80,9 +83,6 @@ label {
 }
 
 .card1:hover {
-  box-shadow: 0px 0px 10px 1px rgba(59, 130, 246, 0.75);
-  -webkit-box-shadow: 0px 0px 10px 1px rgba(59, 130, 246, 0.75);
-  -moz-box-shadow: 0px 0px 10px 1px rgba(59, 130, 246, 0.75);
 }
 
 .productPrice {

@@ -5,7 +5,7 @@ import "./Wishlist.css";
 import { useWishlist } from "../../contexts/Wishlist-Context";
 import { useCart } from "../../contexts/Cart-Context";
 import { axiosRemoveFromWishlist } from "../../utilty/wishlist-utility";
-import { axiosAddToCart } from "../../utilty/cart-utility";
+import { cartClickHandlerFromWishlist } from "../../utilty/cart-utility";
 import { useAuth } from "../../contexts/Auth-Context";
 import { useToast } from "../../contexts/Toast-Context";
 
@@ -50,7 +50,13 @@ export function Wishlist() {
                         auth,
                         toast
                       );
-                      axiosAddToCart(prd, cartDispatch, auth, toast);
+                      cartClickHandlerFromWishlist(
+                        prd,
+                        cartState,
+                        cartDispatch,
+                        auth,
+                        toast
+                      );
                     }}
                     className="secCardBtn"
                   >
