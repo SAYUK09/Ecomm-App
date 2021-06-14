@@ -52,7 +52,7 @@ export default function App() {
         console.log("Error!!!", err);
       }
     })();
-  }, []);
+  }, [auth]);
 
   return (
     <div className="App">

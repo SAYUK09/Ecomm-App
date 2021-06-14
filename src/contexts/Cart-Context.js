@@ -16,6 +16,7 @@ export function CartProvider({ children }) {
 
   useEffect(() => {
     (async function () {
+      console.log("cartttttstststst");
       try {
         const response = await axios.get("https://podcart.herokuapp.com/cart", {
           headers: {
@@ -29,7 +30,7 @@ export function CartProvider({ children }) {
         console.log("Error!!!", err);
       }
     })();
-  }, []);
+  }, [auth]);
 
   return (
     <>
