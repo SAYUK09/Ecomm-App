@@ -1,5 +1,6 @@
 import React from "react";
-import { createContext, useContext, useState } from "react";
+import axios from "axios";
+import { createContext, useContext, useState, useEffect } from "react";
 
 export const WishlistContext = createContext();
 
@@ -11,7 +12,7 @@ export function WishlistProvider({ children }) {
       <WishlistContext.Provider
         value={{
           wishlistItems,
-          setwishlistItems
+          setwishlistItems,
         }}
       >
         {children}

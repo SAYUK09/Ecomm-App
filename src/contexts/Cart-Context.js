@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 import axios from "axios";
 import { createContext, useContext, useState, useEffect } from "react";
 import { cartReducer } from "../reducers/Cart-Reducer";
+import { useAuth } from "../contexts/Auth-Context";
 
 export const CartContext = createContext();
 
@@ -10,12 +11,18 @@ export function CartProvider({ children }) {
     cart: [],
   });
 
+  const { auth } = useAuth();
+  console.log(cartState.cart);
+
   useEffect(() => {
     (async function () {
+      console.log("cartttttstststst");
       try {
-        const response = await axios.get(
-          "https://ecom-backend-1.sayuk.repl.co/cart"
-        );
+        const response = await axios.get("https://podcart.herokuapp.com/cart", {
+          headers: {
+            "auth-token": auth.token,
+          },
+        });
         const cartArr = response.data;
 
         cartDispatch({ type: "LOAD_CART", payload: cartArr });
@@ -23,7 +30,7 @@ export function CartProvider({ children }) {
         console.log("Error!!!", err);
       }
     })();
-  }, []);
+  }, [auth]);
 
   return (
     <>

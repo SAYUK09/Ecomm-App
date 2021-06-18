@@ -4,14 +4,18 @@ import {
   axiosDecrementQty,
   axiosRemoveFromCart,
 } from "../../utilty/cart-utility";
-import { axiosAddToWishlist } from "../../utilty/wishlist-utility";
+import { wishClickHandlerFromCart } from "../../utilty/wishlist-utility";
 
 import { useCart } from "../../contexts/Cart-Context";
 import { useWishlist } from "../../contexts/Wishlist-Context";
+import { useAuth } from "../../contexts/Auth-Context";
+import { useToast } from "../../contexts/Toast-Context";
 
 export function CartProductCard({ prd }) {
   const { cartState, cartDispatch } = useCart();
   const { wishlistItems, setwishlistItems } = useWishlist();
+  const { auth } = useAuth();
+  const { toast } = useToast();
 
   function getProdTotal(prod) {
     const total = parseInt(prod.discountedPrice) * parseInt(prod.qty);
@@ -31,7 +35,7 @@ export function CartProductCard({ prd }) {
             <button
               className="HorizQtyBtn"
               onClick={() => {
-                axiosAddQty(prd, cartDispatch);
+                axiosAddQty(prd, cartDispatch, auth, toast);
               }}
             >
               +
@@ -40,7 +44,7 @@ export function CartProductCard({ prd }) {
             <button
               className="HorizQtyBtn subBtn"
               onClick={() => {
-                axiosDecrementQty(prd, cartDispatch);
+                axiosDecrementQty(prd, cartDispatch, auth, toast);
               }}
             >
               -
@@ -55,15 +59,22 @@ export function CartProductCard({ prd }) {
         <button
           className="horizFooterBtn secBtn"
           onClick={() => {
-            axiosRemoveFromCart(prd, cartDispatch);
+            axiosRemoveFromCart(prd, cartDispatch, auth, toast);
           }}
         >
           Remove
         </button>
         <button
           onClick={() => {
-            axiosAddToWishlist(prd, wishlistItems, setwishlistItems);
-            axiosRemoveFromCart(prd, cartDispatch);
+            wishClickHandlerFromCart(
+              prd,
+              wishlistItems,
+              setwishlistItems,
+              auth,
+              toast
+            );
+
+            axiosRemoveFromCart(prd, cartDispatch, auth, toast);
           }}
           className="horizFooterBtn"
         >

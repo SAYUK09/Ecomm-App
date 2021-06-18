@@ -20,6 +20,15 @@
   padding: 0.5rem;
 }
 
+.userName {
+  color: white;
+}
+
+.routerLink {
+  color: white;
+  font-weight: bold;
+}
+
 .iconBadge {
   position: absolute;
   bottom: 10px;

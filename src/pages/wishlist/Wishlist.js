@@ -5,26 +5,15 @@ import "./Wishlist.css";
 import { useWishlist } from "../../contexts/Wishlist-Context";
 import { useCart } from "../../contexts/Cart-Context";
 import { axiosRemoveFromWishlist } from "../../utilty/wishlist-utility";
-import { axiosAddToCart } from "../../utilty/cart-utility";
+import { cartClickHandlerFromWishlist } from "../../utilty/cart-utility";
+import { useAuth } from "../../contexts/Auth-Context";
+import { useToast } from "../../contexts/Toast-Context";
 
 export function Wishlist() {
   const { wishlistItems, setwishlistItems } = useWishlist();
   const { cartState, cartDispatch } = useCart();
-
-  useEffect(() => {
-    (async function () {
-      try {
-        const response = await axios.get(
-          "https://ecom-backend-1.sayuk.repl.co/wishlist"
-        );
-        const cartArr = response.data;
-
-        setwishlistItems(cartArr);
-      } catch (err) {
-        console.log("Error!!!", err);
-      }
-    })();
-  }, []);
+  const { auth } = useAuth();
+  const { toast } = useToast();
 
   return (
     <div className="wishlistParent">
@@ -41,7 +30,12 @@ export function Wishlist() {
                 <div className="secondaryBtnDiv">
                   <button
                     onClick={() => {
-                      axiosRemoveFromWishlist(prd, setwishlistItems);
+                      axiosRemoveFromWishlist(
+                        prd,
+                        setwishlistItems,
+                        auth,
+                        toast
+                      );
                     }}
                     className="secCardBtn"
                   >
@@ -50,8 +44,19 @@ export function Wishlist() {
 
                   <button
                     onClick={() => {
-                      axiosRemoveFromWishlist(prd, setwishlistItems);
-                      axiosAddToCart(prd, cartDispatch);
+                      axiosRemoveFromWishlist(
+                        prd,
+                        setwishlistItems,
+                        auth,
+                        toast
+                      );
+                      cartClickHandlerFromWishlist(
+                        prd,
+                        cartState,
+                        cartDispatch,
+                        auth,
+                        toast
+                      );
                     }}
                     className="secCardBtn"
                   >

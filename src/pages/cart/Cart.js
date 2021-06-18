@@ -1,10 +1,13 @@
 import "./Cart.css";
+import { useEffect } from "react";
 import { useCart } from "../../contexts/Cart-Context";
-
 import { CartProductCard } from "../../components/cart-product-card/Cart-Product-Card";
+import { useAuth } from "../../contexts/Auth-Context";
+import axios from "axios";
 
 export function Cart() {
   const { cartState, cartDispatch } = useCart();
+  const { auth } = useAuth();
 
   function getPrice() {
     let total = 0;

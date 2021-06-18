@@ -65,34 +65,42 @@ label {
 .card1 {
   margin-bottom: 2rem;
   min-height: 22rem;
-  border: 1px solid #3b82f6;
-  transition: all 0.2s ease-in-out;
+  border: none !important;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 0px 18px -7px rgba(59, 130, 246, 1);
+  -webkit-box-shadow: 0px 0px 18px -7px rgba(59, 130, 246, 1);
+  -moz-box-shadow: 0px 0px 18px -7px rgba(59, 130, 246, 1);
+}
+
+.productTitle {
+  height: 2rem;
+  padding-bottom: 0;
+  white-space: break-spaces !important;
 }
 
 .imgDiv {
-  height: 12rem;
+  height: 12rem !important;
 }
 
 .card1:hover {
-  box-shadow: 0px 0px 10px 1px rgba(59, 130, 246, 0.75);
-  -webkit-box-shadow: 0px 0px 10px 1px rgba(59, 130, 246, 0.75);
-  -moz-box-shadow: 0px 0px 10px 1px rgba(59, 130, 246, 0.75);
 }
 
 .productPrice {
   font-size: 1rem;
 }
 
-.productTitle {
-  white-space: normal;
-  padding-bottom: 0.1rem;
+.productDescrip {
+  line-height: normal;
 }
 
 .secondaryBtnDiv {
-  justify-content: space-between;
+  justify-content: space-between !important;
   padding-top: 0.5rem;
+  /* height: 5rem;
+  align-items: center; */
 }
 
 .secCardBtn {
   min-width: 5rem;
+  /* height: 2.5rem; */
 }

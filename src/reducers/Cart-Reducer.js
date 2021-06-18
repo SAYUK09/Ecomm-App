@@ -1,4 +1,5 @@
 export function cartReducer(cartRedcState, action) {
+  console.log(cartRedcState.cart, "reducer 2");
   switch (action.type) {
     case "LOAD_CART":
       return { ...cartRedcState, cart: action.payload };
