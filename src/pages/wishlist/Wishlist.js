@@ -2,12 +2,14 @@ import React from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import "./Wishlist.css";
+import { Link } from "react-router-dom";
 import { useWishlist } from "../../contexts/Wishlist-Context";
 import { useCart } from "../../contexts/Cart-Context";
 import { axiosRemoveFromWishlist } from "../../utilty/wishlist-utility";
 import { cartClickHandlerFromWishlist } from "../../utilty/cart-utility";
 import { useAuth } from "../../contexts/Auth-Context";
 import { useToast } from "../../contexts/Toast-Context";
+import emptySvg from "../../assets/EmptyWishlist.svg";
 
 export function Wishlist() {
   const { wishlistItems, setwishlistItems } = useWishlist();
@@ -17,6 +19,15 @@ export function Wishlist() {
 
   return (
     <div className="wishlistParent">
+      {!wishlistItems.length && (
+        <div className="emptySvgDiv">
+          <img src={emptySvg} />
+          <h2>Nothing in Wishlist</h2>
+          <Link className="emptySvgLink" to="/">
+            Add Wishes
+          </Link>
+        </div>
+      )}
       <div className="wishlistBody">
         {wishlistItems.map((prd) => {
           return (

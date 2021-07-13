@@ -23,7 +23,7 @@ export function Cart() {
       {!cartState.cart.length && (
         <div className="emptySvgDiv">
           <img src={emptySvg} />
-          <h2>Nothing in Liked Videos</h2>
+          <h2>Nothing in Cart</h2>
           <Link className="emptySvgLink" to="/">
             Shop Now
           </Link>
