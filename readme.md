@@ -7,3 +7,5 @@ A fully functional Ecom App
 - React
 - Express JS
 - Mongoose + MongoDB
+- API
+- 
